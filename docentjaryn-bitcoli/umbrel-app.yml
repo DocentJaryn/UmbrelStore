@@ -4,7 +4,7 @@ category: bitcoin
 name: BitcoLi
 version: "0.1"
 tagline: Self-hosted Lightning wallet for people you trust.
-icon: https://bitcoli.com/bv2/icon.svg
+icon: https://bitcoli.com/img/icon-bv2.svg
 description: >-
   BitcoLi v2 is a distributed, open-source Lightning wallet built for real-world trust and resilience.
 
