@@ -85,6 +85,3 @@ services:
       - ${TOR_DATA_DIR}:/data
     environment:
       HOME: "/tmp"
-
-    external: true
-
