@@ -21,13 +21,13 @@ services:
       BITCOLI_MYSQL_USER: "root"
       BITCOLI_MYSQL_PSWD: "secret"
       BITCOLI_TOR_KEYS: "/data/keys"
-      BITCOLI_TOR_DIR: "/data/tor"
+      BITCOLI_TOR_DIR: "/data/tor2"
       LND_HOST: "$APP_LIGHTNING_NODE_IP:$APP_LIGHTNING_NODE_REST_PORT"
       LND_MACAROON: "/lnd/data/chain/bitcoin/$APP_BITCOIN_NETWORK/admin.macaroon"
     volumes:
 #      - ./src/www:/var/www
       - ${APP_DATA_DIR}/data/keys:/data/keys
-#      - ${TOR_DATA_DIR}/app-${APP_ID}-api:/data/tor
+      - ${TOR_DATA_DIR}/app-${APP_ID}-api:/data/tor2
 #      - ${APP_DATA_DIR}/src/docker/apache.conf:/etc/apache2/ports.conf
       - ${APP_LIGHTNING_NODE_DATA_DIR}:/lnd:ro
     depends_on:
