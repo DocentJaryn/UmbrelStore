@@ -1,0 +1,100 @@
+version: "3.7"
+
+
+services:
+  app_proxy:
+    environment:
+      APP_HOST: bitcoli_app_1
+      APP_PORT: 27608
+
+  app:
+    user: "1000:1000"
+#    build: .
+    image:  docentjaryn/bitcoli-app:0.0.2@sha256:0d5554ca3d8f65e351146a0ef53aae2970c21da4017780bf35c02c0a817629cb
+#    container_name: bitcoli-app
+    ports:
+#      - "27608:27608"     # UI
+      - "$APP_BITCOLI_API_PORT:$APP_BITCOLI_API_PORT"     #API
+    environment:
+      BITCOLI_MYSQL_HOST: "bitcoli_mariadb_1"
+      BITCOLI_MYSQL_DATABASE: "bitcoliv2"
+      BITCOLI_MYSQL_USER: "root"
+      BITCOLI_MYSQL_PSWD: "secret"
+      BITCOLI_TOR_KEYS: "/data/keys"
+      BITCOLI_TOR_DIR: "/data/tor"
+      LND_HOST: "$APP_LIGHTNING_NODE_IP:$APP_LIGHTNING_NODE_REST_PORT"
+      LND_MACAROON: "/lnd/data/chain/bitcoin/$APP_BITCOIN_NETWORK/admin.macaroon"
+    volumes:
+#      - ./src/www:/var/www
+      - ${APP_DATA_DIR}/data:/data
+      - ${TOR_DATA_DIR}/app-${APP_ID}-api:/data/tor:ro
+#      - ${APP_DATA_DIR}/src/docker/apache.conf:/etc/apache2/ports.conf
+      - ${APP_LIGHTNING_NODE_DATA_DIR}:/lnd:ro
+    depends_on:
+      - tor
+      - mariadb
+    networks:
+      - umbrel_main_network
+  worker:
+#    build: .
+    image:  docentjaryn/bitcoli-app:0.0.2@sha256:0d5554ca3d8f65e351146a0ef53aae2970c21da4017780bf35c02c0a817629cb
+#    container_name: bitcoli-worker
+    environment:
+      BITCOLI_MYSQL_HOST: "bitcoli_mariadb_1"
+      BITCOLI_MYSQL_DATABASE: "bitcoliv2"
+      BITCOLI_MYSQL_USER: "root"
+      BITCOLI_MYSQL_PSWD: "secret"
+      BITCOLI_TOR_KEYS: "/data/keys"
+      BITCOLI_TOR_DIR: "/data/tor"
+      LND_HOST: "$APP_LIGHTNING_NODE_IP:$APP_LIGHTNING_NODE_REST_PORT"
+      LND_MACAROON: "/lnd/data/chain/bitcoin/$APP_BITCOIN_NETWORK/admin.macaroon"
+    volumes:
+ #     - ./src/www:/var/www
+      - ${APP_DATA_DIR}/data/keys:/data/keys
+      - ${APP_LIGHTNING_NODE_DATA_DIR}:/lnd:ro
+    depends_on:
+      - mariadb
+    networks:
+      - umbrel_main_network
+    restart: unless-stopped
+    command: >
+      bash -c "
+        php /var/www/common/ln-listener.php
+      "
+
+  mariadb:
+    image: mariadb:10.5.12@sha256:dfcba5641bdbfd7cbf5b07eeed707e6a3672f46823695a0d3aba2e49bbd9b1dd
+    user: "1000:1000"
+    ports:
+      - "3306:3306"
+ #   container_name: bitcoli-db
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: bitcoliv2
+      MYSQL_USER: myapp
+      MYSQL_PASSWORD: mypass
+    volumes:
+      - ${APP_DATA_DIR}/mysql_data:/var/lib/mysql
+      - ${APP_DATA_DIR}/src/docker/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - umbrel_main_network
+
+  tor:
+    user: "1000:1000"
+    image: getumbrel/tor:0.4.7.8@sha256:2ace83f22501f58857fa9b403009f595137fa2e7986c4fda79d82a8119072b6a
+#    container_name: bitcoli-tor
+    restart: on-failure
+    volumes:
+      - ${APP_DATA_DIR}/torrc:/etc/tor/torrc:ro
+#      - ./tor:/var/lib/tor
+      - ${TOR_DATA_DIR}:/data
+    environment:
+      HOME: "/tmp"
+    networks:
+      - umbrel_main_network
+
+networks:
+  umbrel_main_network:
+    external: true
+

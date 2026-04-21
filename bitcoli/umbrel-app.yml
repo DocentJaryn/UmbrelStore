@@ -1,0 +1,109 @@
+manifestVersion: 1
+id: bitcoli
+category: bitcoin
+name: BitcoLi
+version: "0.1"
+tagline: Self-hosted Lightning wallet for people you trust.
+icon: https://bitcoli.com/bv2/icon.svg
+description: >-
+  BitcoLi v2 is a distributed, open-source Lightning wallet built for real-world trust and resilience.
+
+  The architecture is simple: anyone running an LND node can operate a BitcoLi server. Users install the BitcoLi mobile client (Android available, iOS in preparation) and connect only to servers they personally trust.
+
+
+  ** Deterministic Identity **
+  
+  Upon installation, the application generates a seed.
+  
+  From this seed, all cryptographic keys are deterministically derived:
+  
+  - Encryption keys
+  
+  - Transaction signing keys
+  
+  - Authentication keys
+
+  Your cryptographic identity belongs to you — not to the server.
+
+
+  ** Dual-Signed Transactions **
+
+  Every transaction in BitcoLi is:
+  
+  - Signed by the client
+  
+  - Signed by the server
+  
+  This makes transactions non-repudiable and mutually verifiable. Neither side can later deny their participation.
+
+  Both client and server independently store the full transaction history.
+
+
+  ** State Recovery by Design **
+
+  If a server fails or loses data, the client detects missing transactions by comparing signed records.
+
+  The client then re-submits its server-signed transactions.
+  The server verifies the signatures and restores the last valid state.
+
+  No ambiguity. No silent corruption. No hidden rollback.
+
+  
+  ** Trust Model: Human + Cryptographic **
+
+  BitcoLi is not designed for anonymous global infrastructure.
+
+  It is built for closed groups and real-world relationships:
+  
+  - Friends
+  
+  - Families
+  
+  - Communities
+  
+  - Businesses
+  
+  - Known operators
+  
+  Trust is cryptographic — but accountability is human.
+
+  If someone operates a server dishonestly, it carries real-world consequences.
+
+
+  ** Multi-Server Capability **
+
+  A single client can maintain wallets across multiple independent servers.
+
+  You choose who runs your infrastructure.
+
+
+
+  ** Design Principles **
+  
+  - Open source
+  
+  - Deterministic cryptography
+  
+  - Server portability
+  
+  - Verifiable state continuity
+  
+  - No central authority
+  
+  - Decentralized by architecture
+  
+developer: DocentJaryn
+website: https://bitcoli.com
+dependencies:
+  - lightning
+repo: 
+support: 
+port: 8889
+gallery:
+  - https://bitcoli.com/img/android-app-cs.png
+  - https://bitcoli.com/img/android-app-eng.png
+path: ""
+releaseNotes: >-
+  makám na tom....
+submitter: DocentJaryn
+submission: https://github.com/DocentJaryn/BitcoLi/pull/1189
