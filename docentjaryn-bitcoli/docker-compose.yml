@@ -33,8 +33,6 @@ services:
     depends_on:
       - tor
       - mariadb
-    networks:
-      - umbrel_main_network
   worker:
 #    build: .
     image:  docentjaryn/bitcoli-app:0.0.2@sha256:0d5554ca3d8f65e351146a0ef53aae2970c21da4017780bf35c02c0a817629cb
@@ -54,8 +52,6 @@ services:
       - ${APP_LIGHTNING_NODE_DATA_DIR}:/lnd:ro
     depends_on:
       - mariadb
-    networks:
-      - umbrel_main_network
     restart: unless-stopped
     command: >
       bash -c "
@@ -77,8 +73,6 @@ services:
     volumes:
       - ${APP_DATA_DIR}/mysql_data:/var/lib/mysql
       - ${APP_DATA_DIR}/src/docker/init.sql:/docker-entrypoint-initdb.d/init.sql
-    networks:
-      - umbrel_main_network
 
   tor:
     user: "1000:1000"
@@ -91,10 +85,6 @@ services:
       - ${TOR_DATA_DIR}:/data
     environment:
       HOME: "/tmp"
-    networks:
-      - umbrel_main_network
 
-networks:
-  umbrel_main_network:
     external: true
 
