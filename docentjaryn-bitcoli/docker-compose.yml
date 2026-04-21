@@ -82,6 +82,6 @@ services:
     volumes:
       - ${APP_DATA_DIR}/torrc:/etc/tor/torrc:ro
 #      - ./tor:/var/lib/tor
-      - ${TOR_DATA_DIR}:/data
+      - ${TOR_DATA_DIR}:/data/tor
     environment:
       HOME: "/tmp"
