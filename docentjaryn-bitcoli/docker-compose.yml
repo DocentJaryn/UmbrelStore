@@ -31,8 +31,8 @@ services:
 #      - ${APP_DATA_DIR}/src/docker/apache.conf:/etc/apache2/ports.conf
       - ${APP_LIGHTNING_NODE_DATA_DIR}:/lnd:ro
     depends_on:
-      - tor
       - mariadb
+#      - tor      
   worker:
 #    build: .
     image:  docentjaryn/bitcoli-app:0.0.2@sha256:0d5554ca3d8f65e351146a0ef53aae2970c21da4017780bf35c02c0a817629cb
