@@ -27,7 +27,7 @@ services:
     volumes:
 #      - ./src/www:/var/www
       - ${APP_DATA_DIR}/data/keys:/data/keys
-      - ${TOR_DATA_DIR}/app-${APP_ID}-api:/data/tor
+#      - ${TOR_DATA_DIR}/app-${APP_ID}-api:/data/tor
 #      - ${APP_DATA_DIR}/src/docker/apache.conf:/etc/apache2/ports.conf
       - ${APP_LIGHTNING_NODE_DATA_DIR}:/lnd:ro
     depends_on:
