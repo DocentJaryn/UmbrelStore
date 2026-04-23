@@ -140,7 +140,7 @@ INSERT INTO `user_group` (`level`, `max_balance_sat`, `fee_ppm`, `name`) VALUES 
 INSERT INTO `user_group` (`level`, `max_balance_sat`, `fee_ppm`, `name`) VALUES ('3', '1000000', '0', 'Trusted');
 INSERT INTO `user_group` (`level`, `max_balance_sat`, `fee_ppm`, `name`) VALUES ('4', '1000000', '0', 'Full');
 
-INSERT INTO `invitations` (`level`, `id`, `cnt`, `used`, `created`) VALUES ('1', random_string(15), '100', '0', now());
+INSERT INTO `invitations` (`level`, `id`, `description` `cnt`, `used`, `created`) VALUES ('1', random_string(15), 'Default invitation', '100', '0', now());
 
 
 
@@ -151,4 +151,3 @@ CREATE USER 'remoteuser'@'%' IDENTIFIED BY 'tajneheslo';
 GRANT ALL PRIVILEGES ON bitcoliv2.* TO 'remoteuser'@'%';
 FLUSH PRIVILEGES;
 
-INSERT INTO `invitations` (`level`, `id`, `cnt`, `used`, `created`) VALUES ('1', 'betatesters', '100', '0', now());
