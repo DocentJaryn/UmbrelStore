@@ -109,13 +109,15 @@ CREATE TABLE `user_group` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 CREATE TABLE `invitations` (
+  `idx` int(11) NOT NULL AUTO_INCREMENT,
+  `level` int(11) unsigned NOT NULL,
   `id` varchar(20) CHARACTER SET ascii COLLATE ascii_bin NOT NULL,
-  `level` int unsigned NOT NULL,
-  `cnt` int NOT NULL,
-  `used` int NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `cnt` int(11) NOT NULL,
+  `used` int(11) NOT NULL,
   `created` datetime NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  PRIMARY KEY (`idx`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 CREATE TABLE `terms_history` (
   `hash` varchar(44) CHARACTER SET ascii COLLATE ascii_bin NOT NULL,
