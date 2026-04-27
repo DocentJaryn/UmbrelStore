@@ -128,6 +128,19 @@ CREATE TABLE `terms_history` (
   PRIMARY KEY (`hash`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+CREATE TABLE `backup_nodes` (
+  `idx` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `url` varchar(255) NOT NULL COMMENT 'URL backup nodu, např. http://xyz.onion',
+  `ed_pub` varchar(64) NOT NULL COMMENT 'Ed25519 veřejný klíč v base64url (43 znaků)',
+  `token` varchar(45) DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL COMMENT 'Volitelný popis, např. "Honzův node"',
+  `last_backup` datetime DEFAULT NULL COMMENT 'Datum a čas poslední zálohy (UTC)',
+  `last_result` varchar(500) DEFAULT NULL COMMENT 'Prázdný řetězec = úspěch, jinak popis chyby',
+  `created` datetime NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`idx`),
+  UNIQUE KEY `uq_ed_pub` (`ed_pub`),
+  UNIQUE KEY `uq_url` (`url`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 INSERT INTO `config` (`id`, `value`, `description`) VALUES ('settle_index', '1', 'Index poslední zpracované LND transakce');
@@ -142,6 +155,7 @@ INSERT INTO `user_group` (`level`, `max_balance_sat`, `fee_ppm`, `name`) VALUES 
 
 INSERT INTO `invitations` (`level`, `id`, `description` `cnt`, `used`, `created`) VALUES ('1', random_string(15), 'Default invitation', '100', '0', now());
 
+INSERT INTO `backup_nodes` (`url`, `ed_pub`, `token`, `description`) VALUES ('https://bitcoli.com/bv2/test/api', '', '', 'Default backup server (no guarantee)');
 
 
 /* 
@@ -150,4 +164,3 @@ INSERT INTO `invitations` (`level`, `id`, `description` `cnt`, `used`, `created`
 CREATE USER 'remoteuser'@'%' IDENTIFIED BY 'tajneheslo';
 GRANT ALL PRIVILEGES ON bitcoliv2.* TO 'remoteuser'@'%';
 FLUSH PRIVILEGES;
-
