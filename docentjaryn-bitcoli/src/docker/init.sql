@@ -131,6 +131,7 @@ CREATE TABLE `terms_history` (
 CREATE TABLE `backup_nodes` (
   `idx` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `url` varchar(255) NOT NULL COMMENT 'URL backup nodu, např. http://xyz.onion',
+  `use_tor` tinyint(4) NOT NULL DEFAULT 1,
   `ed_pub` varchar(64) NOT NULL COMMENT 'Ed25519 veřejný klíč v base64url (43 znaků)',
   `token` varchar(45) DEFAULT NULL,
   `description` varchar(255) DEFAULT NULL COMMENT 'Volitelný popis, např. "Honzův node"',
@@ -140,7 +141,7 @@ CREATE TABLE `backup_nodes` (
   PRIMARY KEY (`idx`),
   UNIQUE KEY `uq_ed_pub` (`ed_pub`),
   UNIQUE KEY `uq_url` (`url`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 INSERT INTO `config` (`id`, `value`, `description`) VALUES ('settle_index', '1', 'Index poslední zpracované LND transakce');
