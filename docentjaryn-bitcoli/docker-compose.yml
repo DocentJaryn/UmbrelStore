@@ -92,8 +92,10 @@ services:
       - ${TOR_DATA_DIR}:/data
     environment:
       HOME: "/tmp"
+    entrypoint: ["/bin/sh", "-c"]
     command: >
-      sh -c "
-        sleep 20;
-        tor
-      "
+      until nc -z app 27609; do
+        echo "waiting for app...";
+      sleep 2;
+      done;
+      exec tor
