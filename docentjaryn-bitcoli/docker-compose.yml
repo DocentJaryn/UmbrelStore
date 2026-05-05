@@ -35,6 +35,7 @@ services:
     depends_on:
       - mariadb
 #      - tor      
+    restart: on-failure
   worker:
 #    build: .
     image:  docentjaryn/bitcoli-app:0.0.6@sha256:daa78772974b3bef867d6268d2afd42f8c34ff891a7324f8138add405223ffea
@@ -56,7 +57,7 @@ services:
       - ${APP_LIGHTNING_NODE_DATA_DIR}:/lnd:ro
     depends_on:
       - mariadb
-    restart: unless-stopped
+    restart: on-failure
     command: >
       bash -c "
         php /var/www/common/ln-listener.php
@@ -68,7 +69,7 @@ services:
     ports:
       - "13306:3306"
  #   container_name: bitcoli-db
-    restart: unless-stopped
+    restart: on-failure
     environment:
       MYSQL_ROOT_PASSWORD: secret
       MYSQL_DATABASE: bitcoliv2
