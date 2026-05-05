@@ -8,8 +8,8 @@ if [[ -f "${HIDDEN_SERVICE_FILE}" ]]; then
 	exit
 fi
 
-#"${UMBREL_ROOT}/scripts/app" compose "${APP_ID}" up --detach mariadb
-#"${UMBREL_ROOT}/scripts/app" compose "${APP_ID}" up --detach app
+"${UMBREL_ROOT}/scripts/app" compose "${APP_ID}" up --detach mariadb
+"${UMBREL_ROOT}/scripts/app" compose "${APP_ID}" up --detach app
 #sleep 15
 "${UMBREL_ROOT}/scripts/app" compose "${APP_ID}" up --detach tor
 
