@@ -93,9 +93,4 @@ services:
     environment:
       HOME: "/tmp"
     entrypoint: ["/bin/sh", "-c"]
-    command: >
-      until nc -z app 27609; do
-        echo "waiting for app...";
-      sleep 2;
-      done;
-      exec tor
+    command: "until curl -s http://app:27609 >/dev/null; do echo waiting for app...; sleep 2; done; exec tor"
