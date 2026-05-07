@@ -117,7 +117,7 @@ CREATE TABLE `invitations` (
   `used` int(11) NOT NULL,
   `created` datetime NOT NULL,
   PRIMARY KEY (`idx`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 CREATE TABLE `terms_history` (
   `hash` varchar(44) CHARACTER SET ascii COLLATE ascii_bin NOT NULL,
@@ -139,9 +139,10 @@ CREATE TABLE `backup_nodes` (
   `last_result` varchar(500) DEFAULT NULL COMMENT 'Prázdný řetězec = úspěch, jinak popis chyby',
   `created` datetime NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`idx`),
-  UNIQUE KEY `uq_ed_pub` (`ed_pub`),
   UNIQUE KEY `uq_url` (`url`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;
+
+
 
 
 INSERT INTO `config` (`id`, `value`, `description`) VALUES ('settle_index', '1', 'Index poslední zpracované LND transakce');
