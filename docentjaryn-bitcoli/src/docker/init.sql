@@ -77,10 +77,11 @@ CREATE TABLE IF NOT EXISTS `transactions` (
   UNIQUE KEY `IDX_payment_hash` (`payment_hash`,`payment_status`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE IF NOT EXISTS `used_nonces` (
+CREATE TABLE `used_nonces` (
+  `sid` varchar(10) NOT NULL,
   `nonce` varbinary(12) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  PRIMARY KEY (`nonce`)
+  PRIMARY KEY (`nonce`,`sid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 CREATE TABLE `users` (
