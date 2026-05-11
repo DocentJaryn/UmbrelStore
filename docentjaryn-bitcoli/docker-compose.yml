@@ -38,6 +38,9 @@ services:
       - mariadb
 #      - tor      
     restart: on-failure
+    networks:
+      default:
+          ipv4_address: $APP_BITCOLI_API_IP
   worker:
 #    build: .
     image:  docentjaryn/bitcoli-app:0.0.8@sha256:4761c555b5ce82031a9b29026f3e651eb0aa7e2bc26b1d64af5526b0128b33b3
