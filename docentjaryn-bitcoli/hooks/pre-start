@@ -10,7 +10,6 @@ fi
 
 "${UMBREL_ROOT}/scripts/app" compose "${APP_ID}" up --detach mariadb
 "${UMBREL_ROOT}/scripts/app" compose "${APP_ID}" up --detach app
-sleep 1
 "${UMBREL_ROOT}/scripts/app" compose "${APP_ID}" up --detach tor
 
 echo "App: ${APP_ID} - Generating Tor Hidden Service..."
@@ -18,7 +17,8 @@ echo "App: ${APP_ID} - Generating Tor Hidden Service..."
 for attempt in $(seq 1 100); do
 	if [[ -f "${HIDDEN_SERVICE_FILE}" ]]; then
 		echo "App: ${APP_ID} - Hidden service file created successfully!"
-        sleep 10
+  		echo "App: ${APP_ID} - Restarting app container..."
+		"${UMBREL_ROOT}/scripts/app" compose "${APP_ID}" restart app
 		break
 	fi
 	sleep 0.1
