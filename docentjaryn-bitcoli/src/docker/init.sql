@@ -134,7 +134,7 @@ CREATE TABLE `backup_nodes` (
   `url` varchar(255) NOT NULL COMMENT 'URL backup nodu, např. http://xyz.onion',
   `use_tor` tinyint(4) NOT NULL DEFAULT 1,
   `ed_pub` varchar(64) NOT NULL COMMENT 'Ed25519 veřejný klíč v base64url (43 znaků)',
-  `token` varchar(45) DEFAULT NULL,
+  `pswd` varchar(45) DEFAULT NULL,
   `description` varchar(255) DEFAULT NULL COMMENT 'Volitelný popis, např. "Honzův node"',
   `last_backup` datetime DEFAULT NULL COMMENT 'Datum a čas poslední zálohy (UTC)',
   `last_result` varchar(500) DEFAULT NULL COMMENT 'Prázdný řetězec = úspěch, jinak popis chyby',
@@ -158,7 +158,7 @@ INSERT INTO `user_group` (`level`, `max_balance_sat`, `fee_ppm`, `name`) VALUES 
 
 INSERT INTO `invitations` (`level`, `id`, `description`, `cnt`, `used`, `created`) VALUES ('1', random_string(15), 'Default invitation', '100', '0', now());
 
-INSERT INTO `backup_nodes` (`url`, `ed_pub`, `token`, `description`) VALUES ('#defaultbackup#', '', '', 'Default backup server (no guarantee)');
+INSERT INTO `backup_nodes` (`url`, `ed_pub`, `pswd`, `description`) VALUES ('#defaultbackup#', '', '', 'Default backup server (no guarantee)');
 
 
 /* 
