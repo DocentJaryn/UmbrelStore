@@ -149,6 +149,7 @@ CREATE TABLE `backup_nodes` (
 INSERT INTO `config` (`id`, `value`, `description`) VALUES ('settle_index', '1', 'Index poslední zpracované LND transakce');
 INSERT INTO `config` (`id`, `value`, `description`) VALUES ('node_name', 'default name', 'Název serveru');
 INSERT INTO `config` (`id`, `value`, `description`) VALUES ('terms', '{\n    \"node_pub_key\": \"\",\n    \"max_ballance\": 1000,\n    \"fee_pmm\": 0,\n    \"lng\": {\n        \"en\": \"This wallet is for internal testing only and may be shut down at any time without prior notice. \\nPlease do not send more than you are willing to lose.\",\n        \"cs\": \"Tato peněženka je určena pouze pro interní testování a může být kdykoliv vypnuta bez předchozího varování.\\nProsím neposílejte do ní více než jste ochotni ztratit.\"\n    }\n}', 'podmínky používání');
+INSERT INTO `config` (`id`, `value`, `description`) VALUES ('backup_pswd', random_string(15), 'Heslo pro zálohování na mém serveru');
 
 INSERT INTO `user_group` (`level`, `max_balance_sat`, `fee_ppm`, `name`) VALUES ('0', '0', '0', 'Low trust');
 INSERT INTO `user_group` (`level`, `max_balance_sat`, `fee_ppm`, `name`) VALUES ('1', '10000', '0', 'New');
