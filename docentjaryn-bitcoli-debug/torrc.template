@@ -1,0 +1,2 @@
+HiddenServiceDir /data/app-$APP_ID-api
+HiddenServicePort 80 $APP_BITCOLI_API_DEBUG_IP:$APP_BITCOLI_API_DEBUG_PORT
