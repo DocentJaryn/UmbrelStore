@@ -11,7 +11,7 @@ developer: DocentJaryn
 website: https://bitcoli.com
 dependencies:
   - lightning
-repo: 
+repo: https://bitcoli/debug
 support: 
 port: 8890
 gallery:
