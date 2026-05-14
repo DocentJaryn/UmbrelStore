@@ -8,7 +8,7 @@ icon: https://bitcoli.com/img/icon-bv2.svg
 description: >-
 DEBUG VERZE - NEPOUŽÍVAT
 developer: DocentJaryn
-website: https://bitcoli.com
+website: https://bitcoli.com/DEBUG
 dependencies:
   - lightning
 repo: https://bitcoli/debug
