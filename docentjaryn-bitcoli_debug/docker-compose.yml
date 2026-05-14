@@ -5,7 +5,7 @@ services:
   app_proxy:
     environment:
       APP_HOST: docentjaryn-bitcoli-debug_app_1
-      APP_PORT: 27618
+      APP_PORT: 27608
 
   app:
     user: "1000:1000"
