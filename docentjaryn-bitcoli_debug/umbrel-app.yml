@@ -6,7 +6,7 @@ version: "0.0.8.0"
 tagline: DEBUGBITCOLI
 icon: https://bitcoli.com/img/icon-bv2.svg
 description: >-
-DEBUG VERZE - NEPOUŽÍVAT
+  DEBUG VERZE - NEPOUŽÍVAT
 developer: DocentJaryn
 website: https://bitcoli.com/DEBUG
 dependencies:
