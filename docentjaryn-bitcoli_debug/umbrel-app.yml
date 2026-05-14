@@ -1,9 +1,9 @@
 manifestVersion: 1
 id: docentjaryn-bitcoli_debug
 category: bitcoin
-name: BitcoLi - DEBUG
+name: DEBUG-BitcoLi
 version: "0.0.8.0"
-tagline: Self-hosted Lightning wallet for people you trust.
+tagline: DEBUGBITCOLI
 icon: https://bitcoli.com/img/icon-bv2.svg
 description: >-
 DEBUG VERZE - NEPOUŽÍVAT
@@ -21,4 +21,4 @@ path: ""
 releaseNotes: >-
   makám na tom....
 submitter: DocentJaryn
-submission: https://github.com/DocentJaryn/BitcoLi/pull/1189
+submission: https://github.com/DocentJaryn/BitcoLi/pull/1190
