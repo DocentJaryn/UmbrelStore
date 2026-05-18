@@ -8,7 +8,7 @@ icon: https://bitcoli.com/img/icon-bv2.svg
 description: >-
   BitcoLi v2 is a distributed, open-source Lightning wallet built for real-world trust and resilience.
 
-  The architecture is simple: anyone running an LND node can operate a BitcoLi server. Users install the BitcoLi mobile client (Android available, iOS in preparation) and connect only to servers they personally trust.
+  The architecture is simple: anyone running an LND node can operate a BitcoLi server. Users install the BitcoLi mobile client (Android version is available at https://play.google.com/store/apps/details?id=com.bitcoli.client ) and connect only to servers they personally trust.
 
 
   ** Deterministic Identity **
@@ -92,8 +92,8 @@ description: >-
   
   - Decentralized by architecture
   
-developer: DocentJaryn
-website: https://bitcoli.com
+developer: BitcoLi
+website: https://bitcoli.com/bv2
 dependencies:
   - lightning
 repo: 
