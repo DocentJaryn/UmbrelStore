@@ -164,7 +164,7 @@ INSERT INTO `backup_nodes` (`url`, `ed_pub`, `pswd`, `description`) VALUES ('#de
 
 /* 
 !!! Pouze pro usnadnění vývoje, v produkci se musí smazat !!!
-*/
+
 CREATE USER 'remoteuser'@'%' IDENTIFIED BY 'tajneheslo';
 GRANT ALL PRIVILEGES ON bitcoliv2.* TO 'remoteuser'@'%';
-FLUSH PRIVILEGES;
+FLUSH PRIVILEGES;*/
