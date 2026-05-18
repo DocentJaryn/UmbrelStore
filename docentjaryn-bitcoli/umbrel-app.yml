@@ -100,7 +100,7 @@ repo:
 support: 
 port: 8889
 gallery:
-  - https://bitcoli.com/bv2/img/ubrel-main.png.png
+  - https://bitcoli.com/bv2/img/ubrel-main.png
 path: ""
 releaseNotes: >-
   makám na tom....
