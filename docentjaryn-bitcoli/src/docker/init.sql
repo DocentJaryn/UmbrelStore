@@ -161,7 +161,8 @@ INSERT INTO `invitations` (`level`, `id`, `description`, `cnt`, `used`, `created
 
 INSERT INTO `backup_nodes` (`url`, `ed_pub`, `pswd`, `description`) VALUES ('#defaultbackup#', '', '', 'Default backup server (no guarantee)');
 
-
+INSERT INTO `config` (`id`, `value`, `description`) VALUES ('db_version',   '1', 'DB schema version; compared with DB_VERSION constant in constants.php');
+INSERT INTO `config` (`id`, `value`, `description`) VALUES ('db_upgrading', '0', '1 = DB schema migration in progress, app shows upgrading.php');
 /* 
 !!! Pouze pro usnadnění vývoje, v produkci se musí smazat !!!
 
