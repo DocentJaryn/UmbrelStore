@@ -2,7 +2,7 @@ manifestVersion: 1
 id: docentjaryn-bitcoli
 category: bitcoin
 name: BitcoLi2
-version: "0.0.8.0"
+version: "0.0.8.1"
 tagline: Self-hosted Lightning wallet for people you trust.
 icon: https://bitcoli.com/img/icon-bv2.svg
 description: >-
