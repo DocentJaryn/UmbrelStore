@@ -103,6 +103,9 @@ gallery:
   - https://bitcoli.com/bv2/img/ubrel-main.png
 path: ""
 releaseNotes: >-
+  - proxy server BitcoLi nyní provádí v pravidelných intervalech ping na Tor adresu uzlu a hledá nejrychlejší okruh, což zajistí stabilnější připojení.
+  - vylepšena obnova dat
+  - možnost přepnou uzel do stavu údržby což zastaví zpracování plateb a zajistí zálohování opravdu všeho
   makám na tom....
 submitter: DocentJaryn
 submission: https://github.com/DocentJaryn/BitcoLi/pull/1189
